@@ -1,10 +1,25 @@
 import React from "react";
-import { GluestackUIProvider, Text, Box, config, Divider, VStack, HStack } from "@gluestack-ui/react";
+import { 
+	GluestackUIProvider, 
+	Text, 
+	Box, 
+	config, 
+	Divider, 
+	VStack, 
+	HStack, 
+	Badge, 
+	BadgeText, 
+	BadgeIcon, CheckIcon,
+	Heading, 
+	Avatar, 
+	AvatarImage, 
+	AvatarFallbackText } from "@gluestack-ui/react";
 
 export default function Profile() {
 	
 	return (
-		<GluestackUIProvider config={config.theme}>
+		<GluestackUIProvider 
+			config={config.theme}>
 
 			<VStack
 				space="md"
@@ -35,7 +50,7 @@ export default function Profile() {
 					<Text>Easy</Text>
 					<Divider
 						orientation="vertical"
-						mx='$2.5'
+						mx="$2.5"
 						bg="$indigo500"
 						h={15}
 						sx={{
@@ -69,13 +84,31 @@ export default function Profile() {
 					<Box w="$20" h="$20" bg="$blue400" />
 					<Box w="$20" h="$20" bg="$blue500" />
 				</HStack>
-			</VStack>
 				
-			{/* <Box minWidth="80%" justifyContent="center" alignItems="center" backgroundColor="cyan" borderTopLeftRadius={20} borderTopRightRadius={20} marginRight={5} marginLeft={5}>
-				<Text size={"2xl"} padding={2} bold={"true"}>Open up profile.tsx to start working on this component!</Text>
-				<Divider my={"$2.5"} h={2.5} />
-				<Text>Difficult</Text>
-			</Box> */}
+				<VStack space="2xl">
+					<HStack space="md">
+						<Avatar >
+							<AvatarFallbackText>SS</AvatarFallbackText>
+							<AvatarImage
+								source={{
+									uri: "https://cdn-images-1.medium.com/fit/c/200/200/1*Fw9JCCwf5QgPZIV6tlDUKA.png",
+								}}
+							/>
+						</Avatar>
+						<VStack>
+							<HStack>
+								<Heading size="sm" >Marvin Ambrose</Heading>
+								<Badge  size="sm" variant="solid"  action="success" ml="$1">
+									<BadgeText>Verified</BadgeText>
+									<BadgeIcon as={CheckIcon} ml="$1"/>
+								</Badge>
+							</HStack>
+							<Text size="sm" >Software Engineer</Text>
+						</VStack>
+					</HStack>
+				</VStack>
+			
+			</VStack>
 		</GluestackUIProvider>
 	);
 }
