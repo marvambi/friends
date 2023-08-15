@@ -64,6 +64,11 @@ export default function Profile() {
 					/>
 					<Text>Chrome</Text>
 				</VStack>
+				<HStack space="none" reversed={false}>
+					<Box w="$20" h="$20" bg="$blue300" />
+					<Box w="$20" h="$20" bg="$blue400" />
+					<Box w="$20" h="$20" bg="$blue500" />
+				</HStack>
 			</VStack>
 				
 			{/* <Box minWidth="80%" justifyContent="center" alignItems="center" backgroundColor="cyan" borderTopLeftRadius={20} borderTopRightRadius={20} marginRight={5} marginLeft={5}>
