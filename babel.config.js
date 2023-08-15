@@ -5,7 +5,8 @@ module.exports = function (api) {
     plugins: [
       // Required for expo-router
       "nativewind/babel",
-      'expo-router/babel',
+      require.resolve("expo-router/babel")
+      // 'expo-router/babel',
     ],
   };
 };
