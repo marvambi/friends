@@ -17,6 +17,7 @@
       },
       "ecmaVersion": 2018,
       "sourceType": "module",
+      "modules": true,
       "project": "./tsconfig.json"
     },
     "rules": {
