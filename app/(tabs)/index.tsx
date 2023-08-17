@@ -16,7 +16,7 @@ export default function TabOneScreen() {
 	return (
 		<ApolloProvider client={client}>
 			<View style={styles.container}>
-				<Text style={styles.title}>Interesting Countries for People</Text>
+				<Text style={styles.title}>Interesting Places...</Text>
 				<View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
 				<Continents />
 			</View>
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
 	title: {
 		fontSize: 20,
 		fontWeight: "bold",
+		verticalAlign: "middle"
 	},
 	separator: {
 		marginVertical: 30,

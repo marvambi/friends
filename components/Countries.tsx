@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, FlatList, Pressable, Modal, View} from "react-native";
+import { StyleSheet, Text, FlatList, Pressable, Modal, View, SafeAreaView} from "react-native";
 import { useQuery } from "@apollo/client";
 import { COUNTRY_QUERY } from "../gql/Query";
 
@@ -31,27 +31,33 @@ export default function Countries (props: { code: string; modalVisible: boolean 
 	}
 
 	return (
-		<Modal
-			animationType="slide"
-			transparent={true}
-			visible={props.modalVisible}
-			onRequestClose={() => {
-				props.setModalVisible(!props.modalVisible);
-			}}
-		>
-			<View style={styles.container}>
-				<View style={styles.modalView}>
-					<FlatList
-						data={data.continent.countries}
-						renderItem={({ item }) => <CountryItem country={item} />}
-						keyExtractor={(item) => item.code}
-					/>
-					<Pressable style={styles.button} onPress={() => props.setModalVisible(!props.modalVisible)}>
-						<Text style={styles.textStyle}>CLOSE</Text>
-					</Pressable>
+		<SafeAreaView>
+			<Modal
+				animationType="slide"
+				transparent={true}
+				visible={props.modalVisible}
+				onRequestClose={() => {
+					props.setModalVisible(!props.modalVisible);
+				}}
+			>
+				<View style={styles.container} className="bg-gray-100 pb-2">
+					<View style={styles.modalView}>
+						<View style={[styles.button, {width: "90%"}]} className="text-black mt-2">
+							<Text style={styles.textStyle} className="text-center">Countries</Text>
+						</View>
+						<View style={{height: 2, width: "90%"}} className="bg-gray-400 m-1"/>
+						<FlatList
+							data={data.continent.countries}
+							renderItem={({ item }) => <CountryItem country={item} />}
+							keyExtractor={(item) => item.code}
+						/>
+						<Pressable style={styles.button} className="text-black mt-2" onPress={() => props.setModalVisible(!props.modalVisible)}>
+							<Text style={styles.textStyle}>CLOSE</Text>
+						</Pressable>
+					</View>
 				</View>
-			</View>
-		</Modal>
+			</Modal>
+		</SafeAreaView>
 	);
 }
 
@@ -59,7 +65,8 @@ export const styles = StyleSheet.create({
 	container: {
 		paddingTop:40,
 		paddingLeft:20,
-		paddingRight: 20
+		paddingRight: 20,
+		minHeight: "90%"
 	},
 	item: {
 		paddingTop: 16,
@@ -78,11 +85,16 @@ export const styles = StyleSheet.create({
 		fontSize: 20
 	},
 	modalView: { 
-		width:"90%",
-		height:"50%",
+		minWidth:"90%",
+		height:"auto",
 		backgroundColor: "white",
 		borderRadius: 20,
+		position: "relative",
+		marginHorizontal: "auto",
+		marginVertical: "auto",
+		justifyContent: "space-around",
 		alignItems: "center",
+		verticalAlign: "middle",
 		shadowColor: "#000",
 		shadowOffset: {
 			width: 0,
@@ -97,9 +109,10 @@ export const styles = StyleSheet.create({
 		borderRadius: 10,
 		padding: 5,
 		elevation: 2,
-		backgroundColor: "lightgrey"
+		backgroundColor: "darkgrey"
 	},
 	textStyle: {
 		fontSize: 22,
+		color: "white"
 	}
 });
