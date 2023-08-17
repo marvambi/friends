@@ -15,13 +15,14 @@ type ContinentType = {
 export default function Continents() {
 	const [modalVisible, setModalVisible] = useState(false);
 	const [code, setCode] = useState("AF");
-	const { data, loading } = useQuery(CONTINENT_QUERY);
+	const [name, setName] = useState("Africa");
+	const { data, loading, error } = useQuery(CONTINENT_QUERY);
 
 	const ContinentItem = ({ continent }: ContinentType) => {
 		const { name, code } = continent; 
 	
 		return (
-			<Pressable style={styles.item} onPress={() => {setModalVisible(true); setCode(code);}}>
+			<Pressable style={styles.item} onPress={() => {setModalVisible(true); setCode(code); setName(name);}}>
 				<Text style={styles.header}>{name}</Text>
 			</Pressable>
 		);
@@ -30,21 +31,24 @@ export default function Continents() {
 	if (loading) {
 		return <Text>Fetching data...</Text>;
 	}
+	if (error) return <Text> {error.message}</Text>;
 
 	return (
 		<>
 			<View style={[styles.button, {width: "90%"}]} className="text-black mt-2">
 				<Text style={styles.textStyle} className="text-center">Continents</Text>
 			</View>
-			<View style={{height: 4, width: "80%"}} className="bg-gray-400 m-1 rounded-md"/>
-			<View style={{height: 2, width: "75%"}} className="bg-gray-400 mb-1 rounded-md"/>
-			<View style={{height: 1, width: "65%"}} className="bg-gray-400 mb-1 rounded-md"/>
+			<View style={{height: "auto", width: "90%"}} className="bg-gray-200 shadow-md m-1 rounded-md content-center items-center">
+				<View style={{height: 4, width: "80%"}} className="bg-gray-400 m-1 rounded-md"/>
+				<View style={{height: 2, width: "75%"}} className="bg-gray-400 mb-1 rounded-md"/>
+				<View style={{height: 1, width: "65%"}} className="bg-gray-400 mb-1 rounded-md"/>
+			</View>
 			<FlatList
 				data={data.continents}
 				renderItem={({ item }) => <ContinentItem continent={item} />}
 				keyExtractor={item => item.code}
 			/>
-			<Countries code={code} modalVisible={modalVisible} setModalVisible={setModalVisible} />
+			<Countries continent={name} code={code} modalVisible={modalVisible} setModalVisible={setModalVisible} />
 		</>
 	);
 }

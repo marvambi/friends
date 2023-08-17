@@ -1,16 +1,26 @@
 import React from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from } from "@apollo/client";
 import { Text, View } from "../../components/Themed";
 import Continents from "../../components/Continents";
+import { onError } from "@apollo/client/link/error";
 
-
-// Initialize Apollo Client
-const client = new ApolloClient({
-	uri: "https://countries.trevorblades.com/graphql",
-	cache: new InMemoryCache()
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+	if (graphQLErrors)
+		graphQLErrors.forEach(({ message, locations, path }) =>
+			console.log(
+				`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+			)
+		);
+	if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
+const httpLink = new HttpLink({ uri: "https://countries.trevorblades.com/graphql" });
+
+const client = new ApolloClient({
+	cache: new InMemoryCache(),
+	link: from([errorLink, httpLink]),
+});
 
 export default function TabOneScreen() {
 	return (

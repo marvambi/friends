@@ -19,10 +19,11 @@ const CountryItem = ({ country }: CountryType) => {
 	);
 };
 
-export default function Countries (props: { code: string; modalVisible: boolean | undefined; setModalVisible: (arg0: boolean) => void; }) {
+export default function Countries (props: { continent: string; code: string; modalVisible: boolean | undefined; setModalVisible: (arg0: boolean) => void; }) {
 	const { data, loading } = useQuery(COUNTRY_QUERY, {
 		variables: {
 			"code": props.code,
+			"continent": props.continent,
 		}
 	});
 
@@ -43,7 +44,7 @@ export default function Countries (props: { code: string; modalVisible: boolean 
 				<View style={styles.container} className="bg-gray-100 pb-2">
 					<View style={styles.modalView}>
 						<View style={[styles.button, {width: "90%"}]} className="text-black mt-2">
-							<Text style={styles.textStyle} className="text-center">Countries</Text>
+							<Text style={styles.textStyle} className="text-center">Countries in {props.continent}</Text>
 						</View>
 						<View style={{height: 4, width: "80%"}} className="bg-gray-400 m-1 rounded-md"/>
 						<View style={{height: 2, width: "75%"}} className="bg-gray-400 mb-1 rounded-md"/>
