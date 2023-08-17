@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { Text, View } from "../../components/Themed";
-import Countries from "../../components/Countries";
+import Continents from "../../components/Continents";
 
 
 // Initialize Apollo Client
@@ -18,7 +18,7 @@ export default function TabOneScreen() {
 			<View style={styles.container}>
 				<Text style={styles.title}>Interesting Countries for People</Text>
 				<View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-				<Countries />
+				<Continents />
 			</View>
 		</ApolloProvider>
 
