@@ -45,7 +45,9 @@ export default function Countries (props: { code: string; modalVisible: boolean 
 						<View style={[styles.button, {width: "90%"}]} className="text-black mt-2">
 							<Text style={styles.textStyle} className="text-center">Countries</Text>
 						</View>
-						<View style={{height: 2, width: "90%"}} className="bg-gray-400 m-1"/>
+						<View style={{height: 4, width: "80%"}} className="bg-gray-400 m-1 rounded-md"/>
+						<View style={{height: 2, width: "75%"}} className="bg-gray-400 mb-1 rounded-md"/>
+						<View style={{height: 1, width: "65%"}} className="bg-gray-400 mb-1 rounded-md"/>
 						<FlatList
 							data={data.continent.countries}
 							renderItem={({ item }) => <CountryItem country={item} />}
