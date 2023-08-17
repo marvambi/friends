@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { Text, View } from "../../components/Themed";
 import Continents from "../../components/Continents";
@@ -15,11 +15,11 @@ const client = new ApolloClient({
 export default function TabOneScreen() {
 	return (
 		<ApolloProvider client={client}>
-			<View style={styles.container}>
+			<SafeAreaView style={styles.container}>
 				<Text style={styles.title}>Interesting Places...</Text>
 				<View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
 				<Continents />
-			</View>
+			</SafeAreaView>
 		</ApolloProvider>
 
 	);
