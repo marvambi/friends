@@ -98,7 +98,7 @@ export default function Profile() {
 						<VStack>
 							<HStack>
 								<Heading size="sm" >Marvin Ambrose</Heading>
-								<Badge  size="sm" variant="solid"  action="success" ml="$1">
+								<Badge size="sm" variant="solid"  action="success" ml="$1">
 									<BadgeText>Verified</BadgeText>
 									<BadgeIcon as={CheckIcon} ml="$1"/>
 								</Badge>
