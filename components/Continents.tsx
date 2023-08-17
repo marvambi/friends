@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, FlatList, Pressable } from "react-native";
+import { Text, FlatList, Pressable, View } from "react-native";
 import { useQuery } from "@apollo/client";
 import { CONTINENT_QUERY } from "../gql/Query";
 import Countries, { CountryType, styles } from "./Countries";
@@ -33,6 +33,12 @@ export default function Continents() {
 
 	return (
 		<>
+			<View style={[styles.button, {width: "90%"}]} className="text-black mt-2">
+				<Text style={styles.textStyle} className="text-center">Continents</Text>
+			</View>
+			<View style={{height: 4, width: "80%"}} className="bg-gray-400 m-1 rounded-md"/>
+			<View style={{height: 2, width: "75%"}} className="bg-gray-400 mb-1 rounded-md"/>
+			<View style={{height: 1, width: "65%"}} className="bg-gray-400 mb-1 rounded-md"/>
 			<FlatList
 				data={data.continents}
 				renderItem={({ item }) => <ContinentItem continent={item} />}
