@@ -28,7 +28,7 @@ export default function Countries (props: { continent: string; code: string; mod
 	});
 
 	if (loading) {
-		return <Text>Fetching countries data...</Text>;
+		return <Text className="vertical-center h-fit">Fetching countries data...</Text>;
 	}
 
 	return (

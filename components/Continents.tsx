@@ -29,7 +29,7 @@ export default function Continents() {
 	};
 
 	if (loading) {
-		return <Text>Fetching data...</Text>;
+		return <Text className="vertical-center h-fit">Fetching Continents...</Text>;
 	}
 	if (error) return <Text> {error.message}</Text>;
 
