@@ -115,7 +115,7 @@ export default function Profile() {
 										<BadgeIcon as={CheckIcon} ml="$1"/>
 									</Badge>
 								</HStack>
-								<Text size="sm" >Software Engineer</Text>
+								<Text size="sm">Software Engineer</Text>
 							</VStack>
 						</HStack>
 					</VStack>
